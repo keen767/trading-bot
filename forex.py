@@ -1,4 +1,4 @@
-from datetime import date, timedelta
+from datetime import datetime, timedelta
 from forex_python.converter import CurrencyRates
 import matplotlib.pyplot as plt
 
@@ -7,8 +7,8 @@ c = CurrencyRates()
 
 def forex_graph(currency1, currency2):
     forex = []
-    for delta_days in range(30):
-        day = date.today() - timedelta(days=delta_days)
+    for delta_hours in range(30*3):
+        day = datetime.today() - timedelta(hours=delta_hours*8)
         exchrate = c.get_rate(currency1, currency2, day)
         forex.append(exchrate)
     return forex
